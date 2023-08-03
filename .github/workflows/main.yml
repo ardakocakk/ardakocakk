@@ -26,19 +26,22 @@ jobs:
       - uses: actions/checkout@v2
 
     # Generates the snake  
-      - uses: Platane/snk@master
-        id: snake-gif
-        with:
-          github_user_name: ardakocakk
-          # these next 2 lines generate the files on a branch called "output". This keeps the main branch from cluttering up.
-          gif_out_path: dist/github-contribution-grid-snake.gif
-          svg_out_path: dist/github-contribution-grid-snake.svg
+     - uses: Platane/snk@master
+  id: snake-gif
+  with:
+    github_user_name: ardakocakk
+    # these next 2 lines generate the files on a branch called "output". This keeps the main branch from cluttering up.
+    gif_out_path: dist/github-contribution-grid-snake.gif
+    svg_out_path: dist/github-contribution-grid-snake.svg
 
-     # show the status of the build. Makes it easier for debugging (if there's any issues).
-      - run: git status
-
-      # Push the changes
-      - name: Push changes
+# Dosyaları "output" şubesine itme
+- name: Push changes
+  run: |
+    git config --global user.name "GitHub Actions"
+    git config --global user.email "actions@github.com"
+    git add dist/
+    git commit -m "Update snake animation"
+    git push origin output
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
