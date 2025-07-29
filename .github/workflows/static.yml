@@ -26,7 +26,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ https://github.com/ardakocakk/ardakocakk/blob/61ff59ce3ee0c1aace727a4c8da9350905454acd/otoai.html }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
